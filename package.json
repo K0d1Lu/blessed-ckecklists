@@ -1,0 +1,33 @@
+{
+	"name": "blessed-forms",
+	"version": "0.0.1",
+	"description": "",
+	"keywords": ["blessed", "checkbox"],
+	"author": "K0d1Lu",
+	"license": "ISC",
+	"dependencies": {
+		"blessed": "^0.1.81"
+	},
+	"devDependencies": {
+		"eslint": "^6.8.0",
+		"eslint-config-airbnb": "^18.0.1",
+		"eslint-config-airbnb-base": "^14.0.0",
+		"eslint-config-prettier": "^6.10.0",
+		"eslint-import-resolver-custom-alias": "^1.2.0",
+		"eslint-plugin-prettier": "^3.1.2",
+		"eslint-plugin-standard": "^4.0.1",
+		"husky": "^4.2.3",
+		"lint-staged": "^10.0.7",
+		"prettier": "^1.19.1",
+		"pretty-quick": "^2.0.1"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged",
+			"pre-push": "npm test -- --passWithNoTests"
+		}
+	},
+	"lint-staged": {
+		"*.{js,json,md, mjs}!(*lock).js": ["eslint --fix", "pretty-quick --staged"]
+	}
+}

@@ -1,0 +1,19 @@
+{
+	"useTabs": true,
+	"printWidth": 80,
+	"tabWidth": 2,
+	"singleQuote": true,
+	"trailingComma": "none",
+	"jsxBracketSameLine": false,
+	"semi": true,
+	"overrides": [
+		{
+			"files": ["*.json", ".eslintrc"],
+			"options": { "parser": "json" }
+		},
+		{
+			"files": "*.md",
+			"options": { "parser": "markdown" }
+		}
+	]
+}
