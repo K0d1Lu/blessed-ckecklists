@@ -1,12 +1,14 @@
 {
 	"name": "blessed-forms",
 	"version": "0.0.1",
-	"description": "",
-	"keywords": ["blessed", "checkbox"],
+	"description": "Display a checklist in your terminal.",
+	"keywords": ["blessed", "checklist", "terminal", "TUI"],
 	"author": "K0d1Lu",
 	"license": "ISC",
 	"dependencies": {
-		"blessed": "^0.1.81"
+		"blessed": "^0.1.81",
+		"shelljs": "^0.8.4",
+		"yargs": "^16.0.3"
 	},
 	"devDependencies": {
 		"eslint": "^6.8.0",
