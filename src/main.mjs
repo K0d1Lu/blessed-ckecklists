@@ -1,25 +1,29 @@
+#!/usr/bin/env node
+
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
-import argv from 'yargs';
+import yargs from 'yargs';
+import { hideBin } from 'yargs/helpers';
 import blessed from 'blessed';
 import shelljs from 'shelljs';
 
-import { initLang, getStr } from '../i18n/languages.mjs';
+import { initLang, getStr } from './i18n/languages.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-fs.readdir(path.resolve(__dirname, '../checklists'), (err, files) => {
+fs.readdir(path.resolve(__dirname, './checklists'), (err, files) => {
 	if (err) {
 		console.error(err);
 		return;
 	}
 
 	shelljs.exec('clear');
-	const { lang } = argv;
+
+	const { lang } = yargs(hideBin(process.argv)).argv;
 
 	initLang(lang).then(() => loadForm(files));
 });
@@ -57,7 +61,7 @@ function loadForm(files) {
 
 	let top = 8;
 
-	files.forEach((file) => {
+	files.forEach(file => {
 		blessed.checkbox({
 			parent: form,
 			name: 'list',
@@ -102,7 +106,7 @@ function loadForm(files) {
 	 *
 	 * If the last element is selected, the array contains only one element, therefore we receive only the boolean
 	 */
-	form.on('submit', (data) => {
+	form.on('submit', data => {
 		// if data is not an array we picked up the last element
 		let names = [];
 		if (!Array.isArray(data.list) && data.list) {
@@ -115,8 +119,8 @@ function loadForm(files) {
 				});
 		}
 
-		const promises = names.map((name) => {
-			return import(`../checklists/${name}`);
+		const promises = names.map(name => {
+			return import(`./checklists/${name}`);
 		});
 
 		const newForm = blessed.form({
@@ -129,10 +133,10 @@ function loadForm(files) {
 
 		let top = 2;
 
-		Promise.all(promises).then((lists) => {
-			lists.forEach((q) => {
+		Promise.all(promises).then(lists => {
+			lists.forEach(q => {
 				const questions = q.default;
-				questions.forEach((question) => {
+				questions.forEach(question => {
 					const { level = 'default' } = question;
 					blessed.checkbox({
 						parent: newForm,

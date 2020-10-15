@@ -1,10 +1,19 @@
 {
-	"name": "blessed-forms",
+	"name": "clist",
 	"version": "0.0.1",
 	"description": "Display a checklist in your terminal.",
-	"keywords": ["blessed", "checklist", "terminal", "TUI"],
+	"keywords": [
+		"blessed",
+		"checklist",
+		"terminal",
+		"TUI"
+	],
 	"author": "K0d1Lu",
 	"license": "ISC",
+	"main": "src/main.mjs",
+	"bin": {
+		"clist": "src/main.mjs"
+	},
 	"dependencies": {
 		"blessed": "^0.1.81",
 		"shelljs": "^0.8.4",
@@ -30,6 +39,9 @@
 		}
 	},
 	"lint-staged": {
-		"*.{js,json,md, mjs}!(*lock).js": ["eslint --fix", "pretty-quick --staged"]
+		"*.{js,json,md, mjs}!(*lock).js": [
+			"eslint --fix",
+			"pretty-quick --staged"
+		]
 	}
 }
