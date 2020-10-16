@@ -1,6 +1,8 @@
 export default {
 	common: {
-		validate: 'valider'
+		validate: 'valider',
+		nofile:
+			'Aucune checklist ne correspond à vos critères, veuillez vérifier vos informations.'
 	},
 	form: {
 		title: 'checklist',
