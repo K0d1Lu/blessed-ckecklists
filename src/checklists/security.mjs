@@ -9,6 +9,6 @@ export default [
 	},
 	{
 		question: 'security.csrf',
-		level: 'warn'
+		level: ''
 	}
 ];

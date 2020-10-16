@@ -2,7 +2,9 @@ export default {
 	common: {
 		validate: 'valider',
 		nofile:
-			'Aucune checklist ne correspond à vos critères, veuillez vérifier vos informations.'
+			'Aucune checklist ne correspond à vos critères, veuillez vérifier vos informations.',
+		listError:
+			"checklist error : Une entrée obligatoire n'a pas été validée, merci d'effectuer les modifications nécessaires"
 	},
 	form: {
 		title: 'checklist',

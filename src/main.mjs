@@ -5,6 +5,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
+import stdinTty from 'force-stdin-tty';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import blessed from 'blessed';
@@ -16,6 +17,16 @@ import { initLang, getStr } from './i18n/languages.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
+/**
+ * Used for git hook in husky's context
+ */
+try {
+	stdinTty.forceStdinTty();
+} catch {
+	console.error('Please push your code in a terminal.');
+	process.exit(1);
+}
 
 const screen = blessed.screen({
 	smartCSR: true,
